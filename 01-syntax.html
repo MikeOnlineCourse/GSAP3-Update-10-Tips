@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>syntax</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <div class="box-100 bg-red"></div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        /*
+            不再區分TweenLite，TimelineLite和TimelineMax，以全部合併gsap物件！
+            雖然新版本仍然相容舊寫法，但是新寫法提供較好的可讀性。
+       */
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', ()=>{
+            // OLD
+            // TweenMax.to(".box-100", 1, {x: 200});
+
+            //NEW
+            gsap.to(".box-100", {duration: 1, x: 200, ease: "elastic"});
+
+        });
+    </script>
+
+
+</body>
+</html>

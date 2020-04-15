@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Utility-Methods</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <div id="word" class="bg-yellowgreen">
+
+        <div class="mid bg-steelblue">
+            <h1 class="xTxt pos color-white">X: 0</h1>
+        </div>
+
+    </div>
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        const body = document.body;
+        const Xtxt = document.querySelector('.xTxt');
+        const mid = document.querySelector('.mid');
+
+        /*
+            https://greensock.com/docs/v3/GSAP/UtilityMethods
+            snap() -> 攔截數值或是陣列中最接近的數值
+            mapRange() -> 設定一個數字範圍及相對應換算值，將數字範圍換算成相對應換算值回傳
+            interpolate() -> 相似類型的任意兩個值具有多個屬性的對象製作之間線性插值，介於0和1之間(數字，顏色，字串，數組，具有多組嵌入數字的複雜字符串)
+            pipe() -> 將多個函式調用組合，將結果傳遞到下一個函式。
+        */
+        const span50 = gsap.utils.snap(50);
+        const spanEdges = gsap.utils.snap({values:[0, window.innerWidth], radius: 100});
+        const widthRange = gsap.utils.mapRange(0, window.innerWidth, 0, 1);
+        const interpColor = gsap.utils.interpolate('#c00', '#00c');
+        const popeColor = gsap.utils.pipe(
+            spanEdges,
+            widthRange,
+            interpColor,
+        )
+
+        const handMoveVal = e =>{
+            const {x} = {pageX} = e;
+            
+            // const posX = span50(x)
+            // const posX = spanEdges(x)
+            const posX = widthRange(spanEdges(x))
+            // const bgColor = interpColor(widthRange(spanEdges(x)));
+            const bgColor = popeColor(x);
+
+            mid.style.backgroundColor = bgColor;
+
+
+            handText(posX);
+        }
+
+        const handText = x =>{
+            Xtxt.innerText = `X: ${x}`
+        }
+        body.addEventListener('mousemove', handMoveVal)
+
+
+
+    </script>
+
+
+</body>
+</html>

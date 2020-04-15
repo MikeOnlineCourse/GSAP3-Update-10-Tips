@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>used_to_in_css</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <div class="box-100 bg-red"></div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        /*
+            x => translateX
+            y => translateY
+            rotation => rotate
+            rotationX => rotateX
+            rotation Y => rotateY
+       */
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', ()=>{
+            gsap.to(".box-100", {
+                duration: 1, 
+                // x:"50vw",     // 可以直接使用css的單位
+                translateX: 100,
+                translateY: 100,
+                rotate: 360,
+                // rotation:"360_cw",    // 順時針旋轉
+                // rotation:"360_ccw",   // 逆時針旋轉
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

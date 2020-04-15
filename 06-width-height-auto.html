@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>width-height-auto</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <div id="app">
+        <div class="box-100 bg-red pd20">
+            <h2>1</h2><br/>
+            <h2>1</h2><br/>
+            <h2>1</h2><br/>
+            <h2>1</h2><br/>
+            <h2>1</h2><br/>
+        </div>
+    </div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        
+        /*
+            width、height設置auto， 可以依照內容自動擴展寬高
+        */
+
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', ()=>{
+            //NEW
+            gsap.to(".box-100", {
+                duration: 1, 
+                width: 'auto',
+                height: 'auto',
+                ease: "elastic"
+            });
+
+        });
+    </script>
+
+
+</body>
+</html>

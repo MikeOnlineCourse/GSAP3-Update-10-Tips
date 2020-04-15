@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>global timeline</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <button id="stop">global stop</button>
+    <button id="play">global play</button>
+    <div class="cube1 box-100 bg-red"></div>
+    <div class="cube2 box-100 bg-blue"></div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+
+        /*
+            全局的動畫控制 & 設定
+            gsap.globalTimeline.timeScale(0.1); //控制整個動化的速率 0 ~ 1
+            gsap.globalTimeline.pause();  //停止目前所有動畫
+            gsap.globalTimeline.play();   //播放目前所有動畫
+            gsap.globalTimeline.paused(); //回傳目前動畫狀態 true:暫停 / false:播放
+        */
+
+        const stopbtn = document.getElementById('stop');
+        const playbtn = document.getElementById('play');
+        gsap.globalTimeline.timeScale(0.1);
+        gsap.globalTimeline.pause();
+        
+        gsap.timeline({defaults:{ease:"elastic", duration: 2}})
+                .to(".cube1", {x:100})
+                .to(".cube2", {y:100})
+
+        playbtn.addEventListener('click', ()=>{
+            gsap.globalTimeline.play();
+        });
+
+        stopbtn.addEventListener('click', ()=>{
+            gsap.globalTimeline.pause();
+        });
+
+    </script>
+
+</body>
+</html>

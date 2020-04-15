@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Timeline defaults</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <div class="cube1 box-100 bg-red"></div>
+    <div class="cube2 box-100 bg-blue"></div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        /*
+             使用timeline的時候不用再一個個設定相同的配置
+             現在只需要再時間軸上設置默認值即可
+       */
+        const btn = document.getElementById('btn');
+        btn.addEventListener('click', ()=>{
+            gsap.timeline({defaults:{ease:"elastic", duration: 1}})
+                .to(".cube1", {x:100})
+                .to(".cube2", {y:100})
+        });
+    </script>
+
+
+</body>
+</html>

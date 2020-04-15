@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>repeatRefresh</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+    
+    <button id="btn">click</button>
+    <div class="cube box-100 bg-red"></div>
+    <div class="cube box-100 bg-blue"></div>
+    <div class="cube box-100 bg-yellowgreen"></div>
+
+    <script src="./GSAP3/gsap.min.js"></script>
+    <script>
+        const btn = document.getElementById('btn');
+
+        btn.addEventListener('click', ()=>{
+            /*
+                新的 repeatRefresh 功能會再repeat執行時，
+                記錄當前狀態然後再執行，而不會整個重新開始
+            */
+            gsap.to(".cube", {
+                duration: 1,
+                x: "random(100, 500)",
+                y: "+=50",
+                stagger: 1,
+                repeat: 5,
+                repeatRefresh: true,
+            });
+        
+        });
+        
+    </script>
+</body>
+</html>
